@@ -1,0 +1,195 @@
+﻿@model Flask_Web_Core.Models.UserDetails;
+@{
+    Layout = null;
+    ViewData["Title"] = "Option Strategies - Sign Up user";
+}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	  <title>@ViewData["Title"]</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  
+	  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="../css/style.css">
+	  <style type="text/css">
+		  .sreq
+		  {
+			  color:red;
+		  }
+		  .ftco-section {
+			  padding: 3em 0;
+		  }
+	  </style>
+  </head>
+  <body>
+	  <section class="ftco-section">
+		  <div class="container">
+			  <div class="row justify-content-center">
+				  <div class="col-md-6 text-center mb-5">
+					  <h2 class="heading-section">Implement Your Own Option Strategies</h2>
+					  </div>
+					  </div>
+					  <div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(../images/bg-1.jpg);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h5 class="mb-4">Sign Up</h5>
+			      		</div>
+						  <div class="w-100">
+							  <p class="social-media d-flex justify-content-end">
+								  <a asp-action="Index" asp-controller="Login" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-home"></span></a>
+								  </p>
+						  </div>
+			      	</div>
+					  <div class="signin-form">
+						  <form asp-controller="SignUp" asp-action="Register" class="signin-form" method="post" id="formRegister">
+							  <div class="form-group mb-3">
+								  <label class="label" for="FirstName">First Name <span class="sreq">*</span></label>
+								  <input type="text" class="form-control req" data-err="err_FirstName" placeholder="First Name" asp-for="FirstName" required />
+								  <span id="err_FirstName" style="color:red;font-size:15px;"></span>
+							  </div>
+							  <div class="form-group mb-3">
+								  <label class="label" for="LastName">Last Name <span class="sreq">*</span></label>
+								  <input type="text" class="form-control req" data-err="err_LastName" placeholder="Last Name" asp-for="LastName" required />
+								  <span id="err_LastName" style="color:red;font-size:15px;"></span>
+							  </div>
+							  <div class="form-group mb-3">
+								  <label class="label" for="Email">Email <span class="sreq">*</span></label>
+								  <input type="text" class="form-control req" placeholder="Email" data-err="err_Email"  asp-for="Email" id="Email" required />
+								  <span id="err_Email" style="color:red;font-size:15px;"></span>
+							  </div>
+							  <div class="form-group mb-3">
+								  <label class="label" for="Password">Password <span class="sreq">*</span></label>
+								  <input type="password" class="form-control req" placeholder="Password" asp-for="Password" data-err="err_Password" id="Password" required />
+								  <span id="err_Password" style="color:red;font-size:15px;"></span>
+							  </div>
+							  <div class="form-group mb-3">
+								  <label class="label" for="DupPassword">Re-type Password <span class="sreq">*</span></label>
+								  <input type="password" class="form-control req" placeholder="Re-type Password" asp-for="DupPassword" data-err="err_DupPassword" id="DupPassword" required />
+								  <span id="err_DupPassword" style="color:red;font-size:15px;"></span>
+							  </div>
+							  <div class="form-group  mb-3">
+							  <button type="button" class="form-control btn btn-primary rounded submit px-3" id="btnRegister">Register</button>
+							  </div>
+						  </form>
+						  
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			function isValidEmail(emailID) {
+				var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+				return pattern.test(emailID);
+			}
+			function validEmail(){
+				var $eml = $('#Email');
+				var email = $eml.val();
+				var etxtID = $eml.data('err');
+				if($('#'+etxtID).text()!= '' || $('#'+etxtID).text()== 'Please enter valid email' || $('#'+etxtID).text()== 'Email exists. Please check.')
+				$('#'+etxtID).text('');
+				if(email != ''){
+					if (!isValidEmail(email)){
+						$('#'+etxtID).text('Please enter valid email');
+						return false;
+					}else {
+						$.ajax({
+							type : 'POST',
+							async: false,
+							url: 'userExists',
+							dataType: "json",
+							contentType: 'application/json; charset=utf-8',
+							data : { 'emailID' : email},
+							success: function(data) {
+								$('#'+etxtID).text('Email exists. Please check.');
+								return false;
+							},
+							error: function() {
+								alert("Error occured!!");
+								return false;
+							}
+						});
+					}
+				} else if (email == ""){
+					$('#'+etxtID).text('Please enter email');
+					return false;
+				}
+				return true;
+			}
+			function validPassword()
+			{
+				var pwd = $('#Password').val();
+				var dupPwd = $('#DupPassword').val();
+				if(pwd != '' && dupPwd != '' && pwd == dupPwd)
+				return true;
+				else
+				return false;
+			}
+			$('#Password, #DupPassword').on('keydown focus focusout keyup keypress', function(){
+				$('#err_DupPassword').text('');
+				var validPWD = validPassword();
+				if(!validPWD)
+				$('#err_DupPassword').text('Please type exact password as above');
+			});
+			$('#btnRegister').on('click', function(e){
+				e.preventDefault();
+				$('.req').each(function(index){
+					var $this = $(this);
+					var errID = $this.data('err');
+					$('#'+errID).text('');
+					if($this.val() == '')
+					{
+						$('#'+errID).text( $this.attr('placeholder') + ' is required');
+					}
+				});
+				var validEml = validEmail();
+				var validPWD = validPassword();
+				if(!validPWD)
+				$('#err_DupPassword').text('Please type exact password as above');				
+			});
+
+
+			$('#btnForgot').on('click', function(e){
+				e.preventDefault();
+				var email = $('#txtEmail').val();
+				$('#errTxt').text('');
+				if(email != ''){
+					if (!isValidEmail(email)){
+						$('#errTxt').text('Please enter valid email');
+					}else {
+						$.ajax({
+							type : 'POST',
+							async: false,
+							url: 'sendPassword',
+							dataType: "json",
+							contentType: 'application/json; charset=utf-8',
+							data : { 'emailID' : email},
+							success: function(data) {
+								$('#errTxt').text('Email has been sent. Please check inbox');
+							},
+							error: function() {
+								alert("Error occured!!");
+							}
+						});
+					}
+				} else if (email == ""){
+					$('#errTxt').text('Please enter email');
+				}
+			});
+		});
+	</script>
+</body>
+</html>
