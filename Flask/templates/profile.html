@@ -4,4 +4,9 @@
 <h1 class="title">
     Welcome, {{name}}!
 </h1>
+{% if current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.logout') }}" class="btn btn-primary navbar-item">
+                            Logout
+                        </a>
+                        {% endif %}
 {% endblock %}

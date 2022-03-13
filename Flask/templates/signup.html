@@ -1,38 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="notification is-danger">
-                    {{ messages[0] }}<br> Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section">Implement Your Own Option Strategies</h2>
+            </div>
+            </div>
+            <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+          <div class="wrap d-md-flex">
+            <div class="img" style="background-image: url({{url_for('static', filename='images/bg-1.jpg')}});">
+        </div>
+              <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+                <div class="w-100">
+                    <h5 class="mb-4">Sign Up</h5>
                 </div>
-            {% endif %}
-        {% endwith %}
-
-        <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+                <div class="w-100">
+                    <p class="social-media d-flex justify-content-end">
+                        <a href="{{ url_for('main.index') }}" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-home"></span></a>
+                        </p>
                 </div>
             </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
-        </form>
+            <div class="signin-form">
+                <form class="signin-form" method="post" id="formRegister">
+                    <div class="form-group mb-3">
+                        <label class="label" for="LastName">Full Name <span class="sreq">*</span></label>
+                        <input type="text" class="form-control req" data-err="err_LastName" placeholder="Full Name" name="name" required />
+                        <span id="err_LastName" style="color:red;font-size:15px;"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="Email">Email <span class="sreq">*</span></label>
+                        <input type="email" class="form-control req" placeholder="Email" data-err="err_Email" id="Email" name="email" required />
+                        <span id="err_Email" style="color:red;font-size:15px;"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="Password">Password <span class="sreq">*</span></label>
+                        <input type="password" class="form-control req" name="password" placeholder="Password" data-err="err_Password" id="Password" required />
+                        <span id="err_Password" style="color:red;font-size:15px;"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="DupPassword">Re-type Password <span class="sreq">*</span></label>
+                        <input type="password" class="form-control req" placeholder="Re-type Password" data-err="err_DupPassword" id="DupPassword" required />
+                        <span id="err_DupPassword" style="color:red;font-size:15px;"></span>
+                    </div>
+                    <div class="form-group  mb-3">
+                    <button type="button" class="form-control btn btn-primary rounded submit px-3" id="btnRegister">Register</button>
+                    </div>
+                </form>
+                
+      </div>
     </div>
-</div>
+      </div>
+  </div>
+<script src="{{ url_for('static', filename='userScripts/SignUp.js') }}"></script>
 {% endblock %}

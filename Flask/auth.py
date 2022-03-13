@@ -24,7 +24,7 @@ def login(): # define login page fucntion
         if not user:
             flash('Please sign up before!')
             return redirect(url_for('auth.signup'))
-        elif not check_password_hash(user.password, password):
+        elif not user.password == password:
             flash('Please check your login details and try again.')
             return redirect(url_for('auth.login')) # if the user doesn't exist or password is wrong, reload the page
         # if the above check passes, then we know the user has the right credentials
@@ -44,7 +44,7 @@ def signup(): # define the sign up function
             flash('Email address already exists')
             return redirect(url_for('auth.signup'))
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-        new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256')) #
+        new_user = User(email=email, name=name, password=password)#generate_password_hash(password, method='sha256')) #
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
@@ -55,3 +55,13 @@ def signup(): # define the sign up function
 def logout(): #define the logout function
     logout_user()
     return redirect(url_for('main.index'))
+
+@auth.route('/ForgotPassword', methods=['GET', 'POST'])
+def ForgotPassword():
+    if request.method=='GET':
+        return render_template('ForgotPassword.html')
+    else:
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        flash('Your password is : ' + user.password)
+        return render_template('ForgotPassword.html')
